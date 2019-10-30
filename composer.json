@@ -11,7 +11,7 @@
         "sdk"
     ],
     "homepage": "https://advertising.amazon.com/",
-    // "license": "Apache OSL-2",
+    "license": "Apache OSL-2.1",
     "authors": [
         {
             "name": "SSPA AIR Dev",
