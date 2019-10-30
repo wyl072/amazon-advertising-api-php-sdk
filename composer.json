@@ -1,5 +1,5 @@
 {
-    "name": "Jootop/amazon-advertising-api-php-sdk",
+    "name": "jootop/amazon-advertising-api-php-sdk",
     "type": "library",
     "description": "Amazon Advertising API Client Library",
     "keywords": [
@@ -11,7 +11,7 @@
         "sdk"
     ],
     "homepage": "https://advertising.amazon.com/",
-    "license": "Apache OSL-2",
+    "license": "Apache-2.0",
     "authors": [
         {
             "name": "SSPA AIR Dev",
@@ -30,7 +30,7 @@
     "repositories": [
         {
             "type": "vcs",
-            "url": "https://github.com/Jootop/amazon-advertising-api-php-sdk"
+            "url": "https://github.com/jootop/amazon-advertising-api-php-sdk"
         }
     ]
 }
