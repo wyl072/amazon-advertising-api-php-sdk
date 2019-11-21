@@ -500,9 +500,9 @@ class Client
         return $req;
     }
 
-    public function requestReport($recordType, $data = null)
+    public function requestReport($recordType, $data = null, $type = "")
     {
-        return $this->_operation("sp/{$recordType}/report", $data, "POST");
+        return $this->_operation("{$type}{$recordType}/report", $data, "POST");
     }
 
     public function getReport($reportId)
