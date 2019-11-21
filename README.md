@@ -107,24 +107,28 @@ $client->profileId = "1234567890";
     * [listPortfoliosEx](#listPortfoliosEx)
 * Campaigns
     * [listCampaigns](#listcampaigns)
+    * [listCampaignsEx](#listCampaignsEx)
     * [getCampaign](#getcampaign)
     * [createCampaigns](#createcampaigns)
     * [updateCampaigns](#updatecampaigns)
     * [archiveCampaign](#archivecampaign)
 * Ad Groups
     * [listAdGroups](#listadgroups)
+    * [listAdGroupsEx](#listAdGroupsEx)
     * [getAdGroup](#getadgroup)
     * [createAdGroups](#createadgroups)
     * [updateAdGroups](#updateadgroups)
     * [archiveAdGroup](#archiveadgroup)
 * Biddable Keywords
     * [listBiddableKeywords](#listbiddablekeywords)
+    * [listBiddableKeywordsEx](#listBiddableKeywordsEx)
     * [getBiddableKeyword](#getbiddablekeyword)
     * [createBiddableKeywords](#createbiddablekeywords)
     * [updateBiddableKeywords](#updatebiddablekeywords)
     * [archiveBiddableKeyword](#archivebiddablekeyword)
 * Negative Keywords
     * [listNegativeKeywords](#listnegativekeywords)
+    * [listNegativeKeywordsEx](#listNegativeKeywordsEx)
     * [getNegativeKeyword](#getnegativekeyword)
     * [createNegativeKeywords](#createnegativekeywords)
     * [updateNegativeKeywords](#updatenegativekeywords)
@@ -137,6 +141,7 @@ $client->profileId = "1234567890";
     * [removeCampaignNegativeKeyword](#removecampaignnegativekeyword)
 * Product Ads
     * [listProductAds](#listproductads)
+    * [listProductAdsEx](#listProductAdsEx)
     * [getProductAd](#getproductad)
     * [createProductAds](#createproductads)
     * [updateProductAds](#updateproductads)
@@ -307,6 +312,12 @@ $client->getCampaign(1234567890);
 }
 ```
 
+#### listCampaignsEx
+> Retrieves a list of campaignsEx satisfying optional criteria.
+
+```PHP
+$client->listCampaignsEx(array("stateFilter" => "enabled"));
+```
 ---
 #### createCampaigns
 > Creates one or more campaigns. Successfully created campaigns will be assigned unique `campaignId`s.
@@ -412,7 +423,13 @@ $client->listAdGroups(array("stateFilter" => "enabled"));
   }
 ]
 ```
+---
+#### listAdGroupsEx
+> Retrieves a list of ad groups satisfying optional criteria.
 
+```PHP
+$client->listAdGroupsEx(array("stateFilter" => "enabled"));
+```
 ---
 #### getAdGroup
 > Retrieves an ad group by Id. Note that this call returns the minimal set of ad group fields, but is more efficient than `getAdGroupEx`.
@@ -536,7 +553,13 @@ $client->listBiddableKeywords(array("stateFilter" => "enabled"));
   }
 ]
 ```
+---
+#### listBiddableKeywordsEx
+> Retrieves a list of keywords satisfying optional criteria.
 
+```PHP
+$client->listBiddableKeywordsEx(array("stateFilter" => "enabled"));
+```
 ---
 #### getBiddableKeyword
 > Retrieves a keyword by Id. Note that this call returns the minimal set of keyword fields, but is more efficient than  getBiddableKeywordEx.
@@ -663,7 +686,13 @@ $client->listNegativeKeywords(array("stateFilter" => "enabled"));
   }
 ]
 ```
+---
+#### listNegativeKeywordsEx
+> Retrieves a list of negative keywords satisfying optional criteria.
 
+```PHP
+$client->listNegativeKeywordsEx(array("stateFilter" => "enabled"));
+```
 ---
 #### getNegativeKeyword
 > Retrieves a negative keyword by Id. Note that this call returns the minimal set of keyword fields, but is more efficient than `getNegativeKeywordEx`.
@@ -882,7 +911,13 @@ $client->listProductAds(array("stateFilter" => "enabled"));
   }
 ]
 ```
+---
+#### listProductAdsEx
+> Retrieves a list of product ads satisfying optional criteria.
 
+```PHP
+$client->listProductAdsEx(array("stateFilter" => "enabled"));
+```
 ---
 #### getProductAd
 > Retrieves a product ad by Id. Note that this call returns the minimal set of product ad fields, but is more efficient than `getProductAdEx`.
