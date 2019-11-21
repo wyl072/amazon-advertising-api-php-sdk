@@ -502,7 +502,7 @@ class Client
 
     public function requestReport($recordType, $data = null)
     {
-        return $this->_operation("{$recordType}/report", $data, "POST");
+        return $this->_operation("sp/{$recordType}/report", $data, "POST");
     }
 
     public function getReport($reportId)
