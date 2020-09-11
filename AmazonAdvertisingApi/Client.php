@@ -154,9 +154,9 @@ class Client
         return $this->_operation("campaigns/extended/{$campaignId}");
     }
 
-    public function createCampaigns($data)
+    public function createCampaigns($data, $type='sp')
     {
-        return $this->_operation("campaigns", $data, "POST");
+        return $this->_operation("{$type}/campaigns", $data, "POST");
     }
 
     public function updateCampaigns($data)
@@ -224,14 +224,28 @@ class Client
         return $this->_operation("keywords/extended/{$keywordId}");
     }
 
+    // Version 1 of create Keywords
     public function createBiddableKeywords($data)
     {
         return $this->_operation("keywords", $data, "POST");
     }
 
+    // Version 2 of create Keywords
+    public function createKeywords($data)
+    {
+        return $this->_operation("sp/keywords", $data, "POST");
+    }
+
+    // Version 1 of update Keywords
     public function updateBiddableKeywords($data)
     {
         return $this->_operation("keywords", $data, "PUT");
+    }
+
+    // Version 2 of update Keywords
+    public function updateKeywords($data)
+    {
+        return $this->_operation("sp/keywords", $data, "PUT");
     }
 
     public function archiveBiddableKeyword($keywordId)
@@ -326,7 +340,7 @@ class Client
 
     public function getProductAdEx($productAdId)
     {
-        return $this->_operation("productAds/extended/{$productAdId}");
+        return $this->_operation("sp/productAds/extended/{$productAdId}");
     }
 
     public function createProductAds($data)
@@ -425,7 +439,7 @@ class Client
 
     public function updateTargetingClauses($data)
     {
-        return $this->_operation("sp/keywords", $data, "PUT");
+        return $this->_operation("sp/targets", $data, "PUT");
     }
 
     public function archiveTargetingClause($targetId)
@@ -502,7 +516,7 @@ class Client
 
     public function requestReport($recordType, $data = null)
     {
-        return $this->_operation("sp/{$recordType}/report", $data, "POST");
+        return $this->_operation("{$recordType}/report", $data, "POST");
     }
 
     public function getReport($reportId)
@@ -557,6 +571,10 @@ class Client
             "User-Agent: {$this->userAgent}"
         );
 
+        // Sandbox
+        // Using bidding controls in the sandbox environment
+        $headers[] = "BIDDING_CONTROLS_ON: true";
+
         if (!is_null($this->profileId)) {
             array_push($headers, "Amazon-Advertising-API-Scope: {$this->profileId}");
         }
@@ -577,7 +595,15 @@ class Client
                 }
                 break;
             case "put":
+                $data = json_encode($params);  // Note the API data types
+                $request->setOption(CURLOPT_POST, true);
+                $request->setOption(CURLOPT_POSTFIELDS, $data);
+                break;
             case "post":
+                $data = json_encode($params);
+                $request->setOption(CURLOPT_POST, true);
+                $request->setOption(CURLOPT_POSTFIELDS, $data);
+                break;
             case "delete":
                 if (!empty($params)) {
                     $data = json_encode($params);
